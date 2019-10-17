@@ -40,11 +40,11 @@ RUN apk add --update \
 RUN rm -rf /var/cache/apk/* && rm -rf /tmp/* && \
     curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
 
-ADD config/website.ini /etc/php7/conf.d/
-ADD config/website.ini /etc/php7/cli/conf.d/
-ADD config/website.pool.conf /etc/php7/php-fpm.d/
+ADD config/www.ini /etc/php7/conf.d/
+ADD config/www.ini /etc/php7/cli/conf.d/
+ADD config/www.pool.conf /etc/php7/php-fpm.d/
 
 CMD ["php-fpm7", "-F"]
 
-WORKDIR /var/www/symfony
+WORKDIR /var/www/website
 EXPOSE 9001
